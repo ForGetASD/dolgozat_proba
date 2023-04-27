@@ -1,18 +1,15 @@
 <?php
 
+use App\Http\Controllers\IngatlanokController;
+use App\Http\Controllers\KategoriakController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('view');
 });
+
+Route::get('/osszesIngatlan', [IngatlanokController::class, 'ingatpluskateg']);
+Route::get('/osszesKateg', [KategoriakController::class, 'index']);
+Route::post('/ujIngatlan', [IngatlanokController::class, 'ujIngatlan']);
+Route::delete('/delIngatlan/{id}', [IngatlanokController::class, 'torlesIngatlan']);
